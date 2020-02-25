@@ -1,4 +1,4 @@
-﻿namespace SalesTaxes
+﻿namespace Models.SalesTaxes
 {
     public class Tax
     {

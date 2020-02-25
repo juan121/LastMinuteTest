@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace SalesTaxes.Utilities
 {
@@ -8,9 +9,34 @@ namespace SalesTaxes.Utilities
         {
             Books = 1,
             MusicCDs = 2,
-            Food =3, 
-            Perfume=4,
-            Medicine=5
+            Food = 3,
+            Perfume = 4,
+            Medicine = 5
+        }
+
+        public static List<Category> ExemptTaxesCategoryList()
+        {
+            return new List<Category>
+            {
+                Category.Books,
+                Category.Food,
+                Category.Medicine
+            };
+        }
+
+        public static double CalculateRelativePercentage(int percentage, double amount)
+        {
+            return (amount * percentage / 100);
+        }
+
+        public static double RoundToTwoDecimals(double amount)
+        {
+            return Math.Round(amount * 100f) / 100f;
+        }
+
+        public static double RoundToNearest05(double amount)
+        {
+            return Math.Round(amount * 20) / 20;
         }
     }
 }
