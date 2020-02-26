@@ -26,12 +26,12 @@ namespace SalesTaxes.Utilities
 
         public static double CalculateRelativePercentage(int percentage, double amount)
         {
-            return (amount * percentage / 100);
+            return RoundToTwoDecimals(amount * percentage / 100);
         }
 
         public static double RoundToTwoDecimals(double amount)
         {
-            return Math.Round(amount * 100f) / 100f;
+            return Math.Round(amount,2, MidpointRounding.AwayFromZero);
         }
 
         public static double RoundToNearest05(double amount)

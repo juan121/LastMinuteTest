@@ -1,0 +1,34 @@
+[
+  {
+    "Id": 1,
+    "Name": "bottle of perfume",
+    "Quantity": 1,
+    "Imported": true,
+    "Price": 27.99,
+    "Category": 4
+  },
+  {
+    "Id": 2,
+    "Name": "bottle of perfume",
+    "Quantity": 1,
+    "Imported": false,
+    "Price": 18.99,
+    "Category": 4
+  },
+  {
+    "Id": 3,
+    "Name": "packet of headache pills",
+    "Quantity": 1,
+    "Imported": false,
+    "Price": 9.75,
+    "Category": 5
+  },
+  {
+    "Id": 4,
+    "Name": "box of chocolates",
+    "Quantity": 1,
+    "Imported": true,
+    "Price": 11.25,
+    "Category": 3
+  }
+]
