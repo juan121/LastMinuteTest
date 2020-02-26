@@ -1,0 +1,19 @@
+[
+{
+  "Id": 1,
+  "Name": "box of chocolates",
+  "Quantity": 1,
+  "Imported": true,
+  "Price": 10.00,
+  "Category": 3
+},
+{
+  "Id": 2,
+  "Name": "bottle of perfume",
+  "Quantity": 1,
+  "Imported": true,
+  "Price": 47.50,
+  "Category": 4
+}
+]
+
