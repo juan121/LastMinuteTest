@@ -1,6 +1,6 @@
 ﻿using static SalesTaxes.Utilities.Utilities;
 
-namespace SalesTaxes
+namespace Models.SalesTaxes
 {
     public class Good : IGood
     {
@@ -8,8 +8,9 @@ namespace SalesTaxes
         public string Name { get; set; }
         public int Quantity { get; set; }
         public bool Imported { get; set; }
-        public float Price { get; set; }
-        public Category CategoryId { get; set; }
+        public double Price { get; set; }
+        public Category Category { get; set; }
+        public double? Tax { get; set; }
 
     }
 }
