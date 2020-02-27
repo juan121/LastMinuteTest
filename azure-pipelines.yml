@@ -1,6 +1,5 @@
 # ASP.NET Core (.NET Framework)
 
-
 trigger:
 - master
 
@@ -33,3 +32,9 @@ steps:
       !**\*TestAdapter.dll
       !**\obj\**
     searchFolder: '$(System.DefaultWorkingDirectory)'
+
+- task: CopyFiles@2
+  inputs:
+    SourceFolder: '$(system.defaultworkingdirectory)'
+    Contents: '**\bin\$(BuildConfiguration)\** **\$(BuildConfiguration)\*test*.dll !**\obj\**'
+    TargetFolder: '$(build.artifactstagingdirectory)'
