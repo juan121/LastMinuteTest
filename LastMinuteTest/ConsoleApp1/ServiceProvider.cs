@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
+using System;
 
 namespace SalesTaxes
 {
@@ -6,11 +7,11 @@ namespace SalesTaxes
     {
         private static ServiceProviderSingleton instance = null;
         private static readonly object padlock = new object();
-        private ServiceProvider _serviceProvider;
+        private readonly ServiceProvider _serviceProvider;
         
         public ServiceProvider ServiceProvider { get => _serviceProvider; }
 
-        ServiceProviderSingleton()
+        ServiceProviderSingleton()  
         {
              _serviceProvider = new ServiceCollection()
             .AddTransient<ITaxCalculator, TaxCalculator>()
@@ -29,6 +30,14 @@ namespace SalesTaxes
                     }
                     return instance;
                 }
+            }
+        }
+
+        public void DisposeServices()
+        {
+            if(_serviceProvider != null)
+            {
+                ((IDisposable)_serviceProvider).Dispose();
             }
         }
     }

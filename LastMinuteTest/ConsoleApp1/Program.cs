@@ -14,19 +14,24 @@ namespace SalesTaxes
         {
             try
             {
-                var goods = ReadFile();
-                if (goods.Any())
+                int numFiles = Directory.GetFiles(filePath, "*", SearchOption.TopDirectoryOnly).Length;
+                for(int i=1; i<=numFiles; i++)
                 {
-                    Console.WriteLine("Input");
-                    WriteGoods(goods);
-                    var taxCalculator = new TaxCalculator();
-                    taxCalculator.CalculateTotal(goods);
-                    Console.WriteLine("Output");
-                    WriteGoods(goods, taxCalculator.TotalTaxValue, taxCalculator.TotalPrice);
-                }
-                else
-                {
-                    Console.WriteLine("Files to read data are empty");
+                    var goods = ReadFile(filePath + "\\shoppingBasket" + i +".json");
+                    if (goods.Any())
+                    {
+                        Console.WriteLine("Input " + i);
+                        WriteGoods(goods);
+                        var taxCalculator = new TaxCalculator();
+                        taxCalculator.CalculateTotal(goods);
+                        Console.WriteLine("Output " + i);
+                        WriteGoods(goods, taxCalculator.TotalTaxValue, taxCalculator.TotalPrice);
+                        Console.WriteLine();
+                    }
+                    else
+                    {
+                        Console.WriteLine("File to read data is empty");
+                    }
                 }
             }
             catch(Exception ex)
@@ -35,11 +40,11 @@ namespace SalesTaxes
             }
         }
 
-        private static ICollection<Good> ReadFile()
+        private static ICollection<Good> ReadFile(string fullPath)
         {
             try
             {
-                var json = File.ReadAllText(filePath + "\\shoppingBasket3.json");
+                var json = File.ReadAllText(fullPath);
                 return JsonConvert.DeserializeObject<ICollection<Good>>(json);
             }
             catch(Exception ex)
@@ -52,7 +57,7 @@ namespace SalesTaxes
         {
             foreach (IGood good in goods)
             {
-                Console.WriteLine($"{good.Quantity} {good.Category.ToString()} at {good.Price.ToString("F")} ");
+                Console.WriteLine($"{good.Quantity} {good.Name} at {good.Price.ToString("F")} ");
             }
             Console.WriteLine();
         }
@@ -61,7 +66,7 @@ namespace SalesTaxes
         {
             foreach (IGood good in goods)
             {
-                Console.WriteLine($"{good.Quantity} {good.Category.ToString()} at {good.Price.ToString("F")}");
+                Console.WriteLine($"{good.Quantity} {good.Name} at {good.Price.ToString("F")}");
             }
 
             Console.WriteLine($"Sales Taxes {totalTaxes.ToString("F")}");

@@ -38,22 +38,27 @@ namespace SalesTaxes.Tests
         [Test,Category("CalculatePriceWithTaxesGood")]
         public void ShouldNotAddImportedTaxesNorSalesTaxes()
         {
+            //arrange
             var good = _goods.Where(g => g.Id == 3).FirstOrDefault();
-            Assert.IsFalse(good.Imported);
             var priceBeforeTaxes = good.Price;
-
+            //Act
             _taxCalculator.CalculatePriceWithTaxesGood(good);
+            //Assert
+            Assert.IsFalse(good.Imported);
             Assert.IsTrue(good.Price == priceBeforeTaxes);
         }
 
         [Test,Category("CalculatePriceWithTaxesGood")]
         public void ShouldAddSaleTaxes()
         {
+            //Arrange
             var good = _goods.Where(g => g.Id == 2).FirstOrDefault();
             var priceBeforeTaxes = RoundToTwoDecimals(good.Price);
             var tax = 1.90; //CalculateRelativePercentage(10, priceBeforeTaxes);
             var shouldFinalPrice = RoundToTwoDecimals(priceBeforeTaxes + tax);
+            //Act
             _taxCalculator.CalculatePriceWithTaxesGood(good);
+            //Assert
             Assert.IsTrue(good.Price > priceBeforeTaxes);
             Assert.IsTrue(good.Price == shouldFinalPrice);
         }
@@ -61,11 +66,14 @@ namespace SalesTaxes.Tests
         [Test,Category("CalculatePriceWithTaxesGood")]
         public void ShouldAddImportedTaxes()
         {
+            //Arrange
             var good = _goods.Where(g => g.Id == 1).FirstOrDefault();
             var priceBeforeTaxes = RoundToTwoDecimals(good.Price);
-            var tax = 0.55;//CalculateRelativePercentage(5, priceBeforeTaxes);
+            var tax = 0.55;
             var shouldFinalPrice = RoundToTwoDecimals(priceBeforeTaxes + tax);
+            //Act
             _taxCalculator.CalculatePriceWithTaxesGood(good);
+            //Assert
             Assert.IsTrue(good.Price > priceBeforeTaxes);
             Assert.IsTrue(good.Price == shouldFinalPrice);
         }
@@ -73,11 +81,14 @@ namespace SalesTaxes.Tests
         [Test,Category("CalculatePriceWithTaxesGood")]
         public void ShouldAddImportedAndSalesTaxes()
         {
+            //Arrange
             var good = _goods.Where(g => g.Id == 4).FirstOrDefault();
             var priceBeforeTaxes = RoundToTwoDecimals(good.Price);
-            var tax = 4.20; //CalculateRelativePercentage(15, priceBeforeTaxes);
+            var tax = 4.20;
             var shouldFinalPrice = RoundToTwoDecimals(priceBeforeTaxes + tax);
+            //Act
             _taxCalculator.CalculatePriceWithTaxesGood(good);
+            //Assert
             Assert.IsTrue(good.Price > priceBeforeTaxes);
             Assert.IsTrue(good.Price == shouldFinalPrice);
         }
@@ -86,11 +97,12 @@ namespace SalesTaxes.Tests
         [Test, Category("CalculateTotal")]
         public void ShouldTotalPriceIncludeTaxes()
         {
-            _taxCalculator.CalculateTotal(_goods);
-
+            //Arrange
             var totalPrice = 74.63;
             var totalTaxes = 6.65;
-
+            //Act
+            _taxCalculator.CalculateTotal(_goods);
+            //Assert
             Assert.AreEqual(totalPrice, _taxCalculator.TotalPrice);
             Assert.AreEqual(totalTaxes, _taxCalculator.TotalTaxValue);
         }
@@ -98,13 +110,14 @@ namespace SalesTaxes.Tests
         [Test, Category("CalculateTotal")]
         public void ShouldTotalPriceIncludeTaxesAndQuantities()
         {
-            _taxCalculator = new TaxCalculator();
-            var newGoods = new List<IGood>() { new Good() { Id = 5, Name = "bread", Imported = false, Price = 1.42f, Quantity = 2, Category = Category.Food } };
-            _taxCalculator.CalculateTotal(newGoods);
-
+            //Arrange
             var totalPrice = 2.84;
             var totalTaxes = 0;
-
+            _taxCalculator = new TaxCalculator();
+            var newGoods = new List<IGood>() { new Good() { Id = 5, Name = "bread", Imported = false, Price = 1.42f, Quantity = 2, Category = Category.Food } };
+            //Act
+            _taxCalculator.CalculateTotal(newGoods);
+            //Assert
             Assert.AreEqual(totalPrice, RoundToTwoDecimals(_taxCalculator.TotalPrice));
             Assert.AreEqual(totalTaxes, RoundToTwoDecimals(_taxCalculator.TotalTaxValue));
         }
@@ -113,6 +126,12 @@ namespace SalesTaxes.Tests
         public void AfterEachTest()
         {
             _goods = null;
+        }
+
+        [OneTimeTearDownAttribute]
+        public void Cleanup() 
+        {
+            ServiceProviderSingleton.Instance.DisposeServices();
         }
 
     }
