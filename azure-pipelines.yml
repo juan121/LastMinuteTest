@@ -31,6 +31,7 @@ steps:
       **\*test*.dll
       !**\*TestAdapter.dll
       !**\obj\**
+      **\SalesTaxes.Tests.dll
     searchFolder: '$(System.DefaultWorkingDirectory)'
 
 - task: CopyFiles@2
