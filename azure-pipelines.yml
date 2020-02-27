@@ -34,8 +34,3 @@ steps:
     SourceFolder: '$(system.defaultworkingdirectory)'
     Contents: '**\bin\$(BuildConfiguration)\** **\$(BuildConfiguration)\*test*.dll !**\obj\**'
     TargetFolder: '$(build.artifactstagingdirectory)'
-
-- task: PublishTestResults@2
-  inputs:
-    testResultsFormat: 'NUnit'
-    testResultsFiles: '**/TEST-*.xml'
