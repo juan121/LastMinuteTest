@@ -31,9 +31,7 @@ steps:
       **\*test*.dll
       !**\*TestAdapter.dll
       !**\obj\**
-      **\SalesTaxes.Tests.dll
-    searchFolder: 'D:\Projects\repos\LastMinuteTest\LastMinuteTest\SalesTaxes.Tests\bin\Debug\netcoreapp3.1'
-
+    searchFolder: '$(System.DefaultWorkingDirectory)'
 - task: CopyFiles@2
   inputs:
     SourceFolder: '$(system.defaultworkingdirectory)'
