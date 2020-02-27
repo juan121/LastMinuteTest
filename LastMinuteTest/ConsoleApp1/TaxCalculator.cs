@@ -9,9 +9,9 @@ namespace SalesTaxes
         public double TotalPrice { get; private set; }
         public double TotalTaxValue { get; private set; }
         /// <summary>
-        /// Calculare the price and the tax of a single good within the list
+        /// Calculate the price and the tax of a single good within the list
         /// </summary>
-        /// <param name="good"></param>
+        /// <param name="good">object specifications for the good</param>
         public void CalculatePriceWithTaxesGood(IGood good)
         {
             bool exempt = ExemptTaxesCategoryList().Contains(good.Category);
@@ -31,7 +31,12 @@ namespace SalesTaxes
                 good.Price = RoundToTwoDecimals(good.Price + saleTax);
             }
         }
-
+        /// <summary>
+        /// Calculate the outcome of the program, including total price with taxes for every single good and total values
+        /// for the collection
+        /// </summary>
+        /// <typeparam name="T">Class that implements IGood, in this case Good</typeparam>
+        /// <param name="goods">collection of goods beased on the input</param>
         public void CalculateTotal<T>(ICollection<T> goods) where T:IGood
         {
             foreach (IGood good in goods)
