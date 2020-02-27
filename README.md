@@ -2,32 +2,40 @@ Project Title
 Test for the interview process of LastMinute in order to complete it according to the guideline.
 
 Getting Started
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+To Run the project, download it from Github repository https://github.com/juan121/LastMinuteTest, select Master branch and click on "Clone or download".
+Once it is downloades, open it with Visual Studio Comunity 2019 and execute main project "SalesTaxes". It will read three json files with the input data 
+described in the test and will show the output coming from the console application.
 
 Prerequisites
-What things you need to install the software and how to install them
+VisualStudio 2019, Microsoft .Net FrameWork
 
-Give examples
-Installing
-A step by step series of examples that tell you how to get a development env running
+Code design and OOP concepts
+Utilities project
+Model folder
+Data folder
+DI .Net Core 3.1
+DI ServiceProvider
+Interfaces and classes
+Inheritance and polymorphism
+Static classes
+Virtual and Override
+Arrow functions
+LinQ
+Software Design Patterns (Singleton)
+Generic T methods
+Exception treatment
 
-Say what the step will be
-
-Give the example
-And repeat
-
-until finished
-End with an example of getting some data out of the system or using it for a little demo
 
 Running the tests
-Explain how to run the automated tests for this system
+To run the tests, go to the test project SalesTaxes.Tests and run the battery tests. Notice they are organized in three categories.
 
 Break down into end to end tests
-Explain what these tests test and why
+Tests have been developed following TDD approach, so they have been implement before implementing the main functionality of the program. It aims to test actions performed by
+the console application in order to ensure their correct outcome. In this particular example I haven't use any mocking framework as I understood it was not necessary
+and I thought it was overengineering
 
-Give an example
 And coding style tests
-Explain what these tests test and why
+Tests have followed AAA structure using NUnit 3.12 Framework.
 
 Give an example
 Deployment
@@ -44,13 +52,11 @@ Versioning
 We use SemVer for versioning. For the versions available, see the tags on this repository.
 
 Authors
-Billie Thompson - Initial work - PurpleBooth
-See also the list of contributors who participated in this project.
-
-License
-This project is licensed under the MIT License - see the LICENSE.md file for details
+Juan Felipe Encinas Pascual
 
 Acknowledgments
-Hat tip to anyone whose code was used
-Inspiration
-etc
+https://nunit.org/docs
+https://github.com/
+https://stackoverflow.com/
+https://csharpindepth.com/
+https://dzone.com/
