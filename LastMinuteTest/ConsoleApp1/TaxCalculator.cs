@@ -8,6 +8,10 @@ namespace SalesTaxes
     {
         public double TotalPrice { get; private set; }
         public double TotalTaxValue { get; private set; }
+        /// <summary>
+        /// Calculare the price and the tax of a single good within the list
+        /// </summary>
+        /// <param name="good"></param>
         public void CalculatePriceWithTaxesGood(IGood good)
         {
             bool exempt = ExemptTaxesCategoryList().Contains(good.Category);
