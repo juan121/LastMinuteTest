@@ -29,12 +29,6 @@ steps:
    command: test
    projects: '**/*test*.csproj'
    arguments: '--configuration $(buildConfiguration)'
-    # testSelector: 'testAssemblies'
-    # testAssemblyVer2: |
-    #   **\*test*.dll
-    #   !**\*TestAdapter.dll
-    #   !**\obj\**
-    # searchFolder: '$(System.DefaultWorkingDirectory)'
 - task: CopyFiles@2
   inputs:
     SourceFolder: '$(system.defaultworkingdirectory)'
