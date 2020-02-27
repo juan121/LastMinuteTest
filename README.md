@@ -6,7 +6,8 @@ To Run the project, download it from Github repository https://github.com/juan12
 Once it is downloades, open it with Visual Studio Comunity 2019 and execute main project "SalesTaxes". It will read three json files with the input data 
 described in the test and will show the output coming from the console application.
 
-Once you make some changes on the project, the approach follow is to commit and push in the developmentBranch and then create a PR from here to MasterBranch. Build in Azure DevOps will start automatically.
+Once you make some changes on the project, the approach follow is to commit and push in the developmentBranch and then create a PR from here to MasterBranch. Build in Azure DevOps will start automatically and you 
+can see it in https://juangit.visualstudio.com/LastMinuteTest/_build
 
 Prerequisites
 VisualStudio 2019, Microsoft .Net FrameWork
@@ -26,7 +27,6 @@ LinQ
 Software Design Patterns (Singleton)
 Generic T methods
 Exception treatment
-
 
 Running the tests
 To run the tests, go to the test project SalesTaxes.Tests and run the battery tests. Notice they are organized in three categories.
