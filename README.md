@@ -2,9 +2,11 @@ Project Title
 Test for the interview process of LastMinute in order to complete it according to the guideline.
 
 Getting Started
-To Run the project, download it from Github repository https://github.com/juan121/LastMinuteTest, select Master branch and click on "Clone or download".
+To Run the project, download it from Github repository https://github.com/juan121/LastMinuteTest or Azure DevOps URL https://juangit.visualstudio.com/LastMinuteTest, select Master branch and click on "Clone or download".
 Once it is downloades, open it with Visual Studio Comunity 2019 and execute main project "SalesTaxes". It will read three json files with the input data 
 described in the test and will show the output coming from the console application.
+
+Once you make some changes on the project, the approach follow is to commit and push in the developmentBranch and then create a PR from here to MasterBranch. Build in Azure DevOps will start automatically.
 
 Prerequisites
 VisualStudio 2019, Microsoft .Net FrameWork
